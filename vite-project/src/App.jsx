@@ -47,8 +47,14 @@ function App() {
         {
           label: 'Yes',
           onClick: () => {
+            // Remove habit from state
             const updatedHabits = habits.filter((_, i) => i !== index);
+            
+            // Update state
             setHabits(updatedHabits);
+            
+            // Update localStorage
+            localStorage.setItem('habits', JSON.stringify(updatedHabits));
           },
         },
         {
@@ -57,7 +63,7 @@ function App() {
       ],
     });
   };
-
+  
   // Handle checkbox progress
   const handleCheck = (index, checked) => {
     const updatedHabits = habits.map((item, i) => {
